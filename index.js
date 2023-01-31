@@ -49,3 +49,8 @@ app.get('/showProfile', (req, res) => {
     });
 })
 
+// app.get('/:productId', function(req, res, next) {
+//     var email = req.params.email;
+//     var user = data.filter(u => u.email == email );
+//     return res.json({ message: 'Users Show', data: user });
+// });

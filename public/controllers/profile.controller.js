@@ -13,3 +13,19 @@ exports.findAll = (req, res) => {
         })
     })
 }
+
+exports.findById = (req, res) => {
+    profilelist.findById(req.params.profileId).then(data=>{
+        if(!data){
+            return res.status(404).json({
+                msg: "ไม่พบ Record รหัส : " + req.params.profilelist
+            })
+        }
+        res.render('profileDetails', {profileDetails: data})
+        // res.json(data)
+    }).catch(err => {
+        return res.status(500).json({
+            msg: "เกิดข้อผิดพลาด เนื่องจาก : " + err.message
+        })
+    })
+}

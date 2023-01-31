@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <h1>Hello World</h1>
+        <p><%= profileDetails.email %></p>
+        <% Object.keys(profileDetails.details).forEach(function(getDetails) { %>
+            <% if(profileDetails.details[getDetails] != "NaN") {%>
+                <p><%- profileDetails.details[getDetails] %></p>
+            <% } %>
+        <% }); %>
+        <script src="/index.js"></script>
+    </body>
+</html>

@@ -3,4 +3,5 @@ module.exports = (app) => {
 
     app.get('/', profilelist.index);
     app.get('/api/profile', profilelist.findAll)
+    app.get('/api/profile/:profileId', profilelist.findById)
 }
