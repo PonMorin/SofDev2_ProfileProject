@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset= "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css", href="/css/profileCard.css">
+  </head>
+  
+  <body>
+    <section class="list-profile">
+      <h1>Student & Teacher</h1>
+      <div class="all-user">
+            <% if(data.length){
+              for(var i = 0; i< data.length; i++) {%> 
+                  <div class="profile">
+                    <a href="/">
+                        <div class="profile-info"> 
+                          <img src="/images/user.png">
+                          <h4 class="profile-email">
+                            <%= data[i].email%>
+                          </h4>
+                          <p class="profile-name">
+                            <%= data[i].details.name%>
+                          </p>
+                          <p class="profile-name">
+                            <%= data[i].details.phoneNumber.slice(0,3)%>-XXX-XXXX
+                          </p>
+                        </div>
+                      </a>
+                  </div>
+               <% }
+            }%> 
+      </div>
+    </section>
+    <script src="/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "profileproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PonMorin/SofDev2_ProfileProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PonMorin/SofDev2_ProfileProject/issues"
+  },
+  "homepage": "https://github.com/PonMorin/SofDev2_ProfileProject#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7"
+  }
+}
