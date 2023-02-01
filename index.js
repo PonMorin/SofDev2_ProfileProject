@@ -49,8 +49,23 @@ app.get('/showProfile', (req, res) => {
     });
 })
 
-// app.get('/:productId', function(req, res, next) {
-//     var email = req.params.email;
-//     var user = data.filter(u => u.email == email );
-//     return res.json({ message: 'Users Show', data: user });
-// });
+
+// function initProfile(){
+//     let data = [
+//         {
+//         email: "6410301022@cdti.ac.th",
+//         details: {
+//             name: "Chonakan Chumtub",
+//             phoneNumber: "095-573-9706",
+//             foodAllergy: "NaN",
+//             medicineAllergy: "NaN",
+//             }
+//         }
+//     ]
+
+//     for(let i = 0; i < data.length; i++){
+//         const c = new Profile(data[i]);
+//         c.save()
+//     }
+//     console.log("สร้าง Customer สำเร็จแล้ว")
+// }
