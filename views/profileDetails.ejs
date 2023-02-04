@@ -2,7 +2,8 @@
 
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="css/style.css">
+        <!-- <link rel="stylesheet" type="text/css", href="/css/popUp.css"> -->
+        <link rel="stylesheet" type="text/css", href="/css/popUp.css">
     </head>
 
     <body>
@@ -13,6 +14,41 @@
                 <p><%- profileDetails.details[getDetails] %></p>
             <% } %>
         <% }); %>
-        <script src="/index.js"></script>
+        <div class="popup-overlay"></div>
+        <div class="popup">
+            <form action="/showProfile/details/addTag/<%=profileDetails._id%>" method="post" name="updateTag">
+                <div class="popup-close" onclick="popUp()">&times;</div>
+                <div class="form">
+                    <div class="header">Add New Tag</div>
+                    <div class="element">
+                        <label  for="newTag">New Tag</label>
+                        <input id="newTag" placeholder="Enter your tag" name="tag" type="text" >
+                    </div>
+                    <!-- <div class="element">
+                        <label for="choose_function">Choose a type of tag</label>
+                        <select name="choose_function" id="type-tag">
+                            <option value="">Choose Type Option</option>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div> -->
+                    <div class="element">
+                        <button type="submit">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <button onclick='popUp()'>Addtag+</button>
+        <script>
+            function popUp(){
+                document.body.classList.toggle("showAddTagForm");
+            }
+            // function showSelection() {
+            //     var select = document.getElementById("type-tag");
+            //     var selectedOption = select.options[select.selectedIndex];
+            //     alert("You selected: " + selectedOption.text);
+            // }
+        </script>
     </body>
 </html>

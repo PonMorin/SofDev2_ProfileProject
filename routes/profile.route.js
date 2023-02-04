@@ -3,5 +3,6 @@ module.exports = (app) => {
 
     app.get('/', profilelist.index);
     app.get('/api/profile', profilelist.findAll)
-    app.get('/api/profile/:profileId', profilelist.findById)
+    app.get('/showProfile/details/:profileId', profilelist.showDetail)
+    app.post('/showProfile/details/addTag/:profileId', profilelist.addTag)
 }

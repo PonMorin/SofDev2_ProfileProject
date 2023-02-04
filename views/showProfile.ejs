@@ -14,7 +14,7 @@
             <% if(data.length){
               for(var i = 0; i < data.length; i++) {%> 
                   <div class="profile">
-                    <a href="/api/profile/<%=data[i]._id%>">
+                    <a href="/showProfile/details/<%=data[i]._id%>">
                         <div class="profile-info"> 
                           <img src="/images/user.png">
                           <h4 class="profile-email">
@@ -33,6 +33,6 @@
             }%> 
       </div>
     </section>
-    <script src="/index.js"></script>
+    <!-- <script src="/index.js"></script> -->
   </body>
 </html>

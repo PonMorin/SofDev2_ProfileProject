@@ -21,6 +21,7 @@ app.use(express.urlencoded({
 //connect to database
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url).then(() => {
+    // initProfile()
     console.log("Connect DataBase")
 }).catch(err => {
     console.log("Cannot Connect to MongoDB")
@@ -50,22 +51,28 @@ app.get('/showProfile', (req, res) => {
 })
 
 
-// function initProfile(){
-//     let data = [
-//         {
-//         email: "6410301022@cdti.ac.th",
-//         details: {
-//             name: "Chonakan Chumtub",
-//             phoneNumber: "095-573-9706",
-//             foodAllergy: "NaN",
-//             medicineAllergy: "NaN",
-//             }
-//         }
-//     ]
+function initProfile(){
+    let data = [
+        {
+        name: "Chonakan Chumtub",
+        email: "6410301022@cdti.ac.th",
+        roles: "Student",
+        details: {
+            nickname: "Chon",
+            phoneNumber: "095-573-9706",
+            grade: 3.97,
+            LineID: "chon20",
+            foodAllergy: "NaN",
+            medicineAllergy: "NaN",
+            },
+        tag: ["chon"]
+        }
+    ]
 
-//     for(let i = 0; i < data.length; i++){
-//         const c = new Profile(data[i]);
-//         c.save()
-//     }
-//     console.log("สร้าง Customer สำเร็จแล้ว")
-// }
+    for(let i = 0; i < data.length; i++){
+        const c = new Profile(data[i]);
+        c.save()
+    }
+    console.log("สร้าง Customer สำเร็จแล้ว")
+}
+
