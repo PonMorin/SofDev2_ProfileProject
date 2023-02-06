@@ -21,11 +21,13 @@
                             <%= data[i].email%>
                           </h4>
                           <p class="profile-name">
-                            <%= data[i].details.name%>
+                            <%= data[i].name%>
                           </p>
-                          <p class="profile-name">
-                            <%= data[i].details.phoneNumber.slice(0,3)%>-XXX-XXXX
-                          </p>
+                          <% if (typeof(data[i].details.department) != "undefined") { %>
+                            <p class="profile-name">
+                              <%= data[i].details.department%>
+                            </p>
+                          <%} %>
                         </div>
                       </a>
                   </div>

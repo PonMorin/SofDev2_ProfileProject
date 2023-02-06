@@ -3,11 +3,21 @@ const mongoose = require('mongoose')
 const ProfileSchema = mongoose.Schema(
     {
         // userID: Number,
-        name: String,
-        email: String,
-        password: Number,
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true
+        },
+        password: {
+            type: String,
+            required: true
+        },
         roles: String,
         details: {
+            department: String,
             nickname: String,
             phoneNumber: String,
             LineID: String,

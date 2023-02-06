@@ -1,7 +1,51 @@
 const profilelist = require('../models/profileList.js')
 
-exports.index = (req, res) => {
+// exports.index = (req, res) => {
+//     session = req.session;
+//     if(session.email){
+//         res.render('index')
+//     }
+//     else{
+//         res.render('login')
+//     }
+// }
+
+exports.homePage = (req, res) =>{
     res.render('index')
+}
+
+exports.signUpPage = (req, res) => {
+    res.render('signUp')
+}
+
+exports.createAccount = async(req, res) => {
+    const data = {
+        email: req.body.email,
+        name: req.body.name,
+        password: req.body.password,
+        roles: req.body.roles,
+        details: {
+            department: req.body.department
+        }
+    }
+
+    await  profilelist.insertMany([data])
+    res.redirect("/")
+}
+
+exports.login = async(req, res) => {
+    try{
+        const check = await profilelist.findOne({email: req.body.email})
+        if(check.password === req.body.password){
+            res.render('index')
+        }
+        else{
+            res.send('wrong password')
+        }
+    }
+    catch{
+        res.send('wrong details ')
+    }
 }
 
 exports.findAll = (req, res) => {
