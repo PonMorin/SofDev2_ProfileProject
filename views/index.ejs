@@ -2,20 +2,73 @@
 
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/menuCard.css">
     </head>
 
+    <header>
+        <a href="/" class="logo">ProfileProject</a>
+            <input type="checkbox" id="menu-bar">
+            <label for="menu-bar">Menu</label>
+            <div class="topnav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/showProfile">ProfileList</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/editProfile">Edit Profile</a></li>
+                </ul>
+            </div>
+    </header>
+
     <body>
-        <div class="topnav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/showProfile">ProfileList</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </div>
         <center>
-            <h1>ProfileProject</h1>
-        </center>     
-        <script src="/index.js"></script>
+            Welcome Back <%= user.email%>
+        </center>
+        <section class="list-profile">
+            <div class="all-menu">
+                <a href="/showProfile">
+                    <div class="menu-card">
+                        
+                            <div class="menu-info"> 
+                            <h4 class="title">
+                                ProfileList
+                            </h4>
+                            <p class="details">
+                                This Menu show about student & teacher profile
+                            </p>
+                            </div>  
+                    </div>
+                </a>
+
+                <a href="/showProfile">
+                    <div class="menu-card">
+                        
+                            <div class="menu-info"> 
+                            <h4 class="title">
+                                Create List Name Table
+                            </h4>
+                            <p class="details">
+                                This Menu will make a table for event participants
+                            </p>
+                            </div>
+                        
+                    </div>
+                </a>
+                <a href="/showProfile">
+                    <div class="menu-card">
+                            <div class="menu-info"> 
+                            <h4 class="title">
+                                Grade Simulation
+                            </h4>
+                            <p class="details">
+                                This Menu will calculate student grade
+                            </p>
+                            </div>
+                        
+                    </div>
+                </a>
+            </div>
+          </section>
     </body>
 </html>

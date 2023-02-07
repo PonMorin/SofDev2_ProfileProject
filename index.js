@@ -55,7 +55,9 @@ var session
 app.get('/', (req,res) => {
     session = req.session
     if(session.email){
-        res.render('index')
+        res.render('index',{
+            user: session
+        })
     }
     else{
         res.render('login')
@@ -68,7 +70,9 @@ app.post('/login', async(req,res) => {
         if(check.password === req.body.password){
             session = req.session
             session.email = req.body.email
-            res.render('index')
+            res.render('index',{
+                user: session
+            })
         }
         else{
             res.send('wrong password')
@@ -94,6 +98,19 @@ app.get('/showProfile', (req, res) => {
             console.log('Failed to retrieve the Course List: ' + err);
         }
     });
+})
+
+app.get('/editProfile', async(req, res) => {
+    session = req.session
+    const userEmail = session.email
+    if (session.email) {
+        const getData = await Profile.findOne({email: userEmail})
+        res.render("editProfile", {
+            data: getData
+        });
+    } else {
+        console.log('Failed to retrieve the Course List: ');
+    }
 })
 
 

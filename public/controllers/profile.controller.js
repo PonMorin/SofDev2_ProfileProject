@@ -18,6 +18,7 @@ exports.signUpPage = (req, res) => {
     res.render('signUp')
 }
 
+
 exports.createAccount = async(req, res) => {
     const data = {
         email: req.body.email,
@@ -33,19 +34,34 @@ exports.createAccount = async(req, res) => {
     res.redirect("/")
 }
 
-exports.login = async(req, res) => {
-    try{
-        const check = await profilelist.findOne({email: req.body.email})
-        if(check.password === req.body.password){
-            res.render('index')
+exports.updateProfile = (req, res) =>{
+    profilelist.findByIdAndUpdate(req.params.profileId, {$set: {
+        name: req.body.name,
+        details:{
+            department: req.body.department,
+            nickname: req.body.nickname,
+            phoneNumber: req.body.phoneNumber,
+            LineID: req.body.lineID,
+            grade: req.body.grade,
+            foodAllergy: req.body.foodAllergy,
+            medicineAllergy: req.body.medicineAllergy,
+        }
+    }}, {new: true})
+    .then(data =>{
+        if(!data){
+            return res.status(404).json({
+                msg: "ไม่พบ Record รหัส : " + req.params.profileId
+            })
         }
         else{
-            res.send('wrong password')
+            console.log("Update Complete")
+            res.redirect("/")
         }
-    }
-    catch{
-        res.send('wrong details ')
-    }
+    }).catch(err => {
+        return res.status(500).json({
+            msg: "ไม่สามารถ Update ข้อมูลได้ เนื่องจาก : " + err.message
+        })
+    })
 }
 
 exports.findAll = (req, res) => {

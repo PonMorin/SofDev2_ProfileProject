@@ -8,10 +8,10 @@
 
     <body>
         <h1>Hello World</h1>
-        <p><%= profileDetails.email %></p>
+        <p>Email:<%= profileDetails.email %></p>
         <% Object.keys(profileDetails.details).forEach(function(getDetails) { %>
-            <% if(profileDetails.details[getDetails] != "NaN") {%>
-                <p><%- profileDetails.details[getDetails] %></p>
+            <% if(profileDetails.details[getDetails] != "none") {%>
+                <p><%=getDetails%>: <%= profileDetails.details[getDetails] %></p>
             <% } %>
         <% }); %>
         <div class="popup-overlay"></div>
