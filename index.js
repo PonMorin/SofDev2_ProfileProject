@@ -114,28 +114,4 @@ app.get('/editProfile', async(req, res) => {
 })
 
 
-function initProfile(){
-    let data = [
-        {
-        name: "Chonakan Chumtub",
-        email: "6410301022@cdti.ac.th",
-        roles: "Student",
-        details: {
-            nickname: "Chon",
-            phoneNumber: "095-573-9706",
-            grade: 3.97,
-            LineID: "chon20",
-            foodAllergy: "NaN",
-            medicineAllergy: "NaN",
-            },
-        tag: ["chon"]
-        }
-    ]
-
-    for(let i = 0; i < data.length; i++){
-        const c = new Profile(data[i]);
-        c.save()
-    }
-    console.log("สร้าง Customer สำเร็จแล้ว")
-}
 

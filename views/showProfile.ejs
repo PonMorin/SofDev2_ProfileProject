@@ -5,11 +5,22 @@
     <meta charset= "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css", href="/css/profileCard.css">
+    <link rel="stylesheet" type="text/css", href="/css/search-bar.css">
+    <link rel="stylesheet" type="text/css", href="/css/content.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   
   <body>
     <section class="list-profile">
       <h1>Student & Teacher</h1>
+
+      <div class="container">
+        <form action="" class="search-bar">
+          <input type="text" placeholder="Search anything" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      
       <div class="all-user">
             <% if(data.length){
               for(var i = 0; i < data.length; i++) {%> 
