@@ -8,82 +8,16 @@
 
 body{
     /* padding-top: 100px;
-    padding-left: 10px;
-    min-height: 100vh; */
-    padding: 10rem;
+    padding-left: 10px;*/
+    min-height: 100vh; 
+    padding: 5rem;
 }
 
-header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #055256;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 5px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-
-header .logo{
-    font-weight: bolder;
-    font-size: 25px; 
-    color: #fff;
-}
-
-header .topnav ul{
-    list-style: none;
-}
-
-header .topnav ul li{
-    position: relative;
-    float: left;
-}
-
-header .topnav ul li a{
-    font-size: 20px;
-    padding: 20px;
-    color: #fff;
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
     display: block;
-}
-
-
-#menu-bar{
-    display: none;
-}
-
-header label{
-    font-size: 20px;
-    color: #fff ;
-    cursor: pointer;
-    display: none;
-}
-
-@media only screen and (max-width: 990px) {
-    header{
-        padding: 20px;
-    }
-
-    header label{
-        display: initial;
-    }
-
-    header .topnav{
-        position: absolute;
-        top: 100%; left: 0; right: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        background: #11011b;
-        display: none;
-    }
-
-    header .topnav ul li{
-        width: 100%;
-        left: 0;
-    }
-
-    #menu-bar:checked ~ .topnav{
-        display: initial;
-    }
 }
 
 /* .container{

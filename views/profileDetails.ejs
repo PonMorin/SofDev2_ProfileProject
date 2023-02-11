@@ -3,35 +3,72 @@
 <html lang="en">
     <head>
         <!-- <link rel="stylesheet" type="text/css", href="/css/popUp.css"> -->
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" type="text/css", href="/css/button.css">
         <link rel="stylesheet" type="text/css", href="/css/popUp.css">
+        <link rel="stylesheet" type="text/css", href="/css/userDetails.css">
+        <title>Personal Details</title>
     </head>
 
     <body>
-        <h1>Hello World</h1>
+        <div class="container">
+            <div class="box">
+                <img src="/images/user.png">
+                <ul>
+                    <li><%= profileDetails.email %></li>
+                </ul>
+                
+            </div>
+            <div class="about">
+                <ul>
+                    <h1>Details</h1>
+                </ul>
+                <ul>
+                    <h3>Name</h3>
+                    <li><%= profileDetails.name %></li>
+                </ul>
+                <ul>
+                    <% Object.keys(profileDetails.details).forEach(function(getDetails) { %>
+                        <% if(profileDetails.details[getDetails]) {%>
+                            <h3><%=getDetails%></h3>
+                            <li><%= profileDetails.details[getDetails] %></li>
+                        <% } %>
+                    <% }); %>
+                </ul>
+                <div class="popup-overlay"></div>
+                <div class="popup">
+                    <form action="/showProfile/details/addTag/<%=profileDetails._id%>" method="post" name="updateTag">
+                        <div class="popup-close" onclick="popUp()">&times;</div>
+                        <div class="form">
+                            <div class="header">Add New Tag</div>
+                            <div class="element">
+                                <label  for="newTag">New Tag</label>
+                                <input id="newTag" placeholder="Enter your tag" name="tag" type="text" >
+                            </div>
+                            <div class="element">
+                                <button type="submit">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <button onclick='popUp()' class="button-32" role="button">Addtag+</button>
+                
+            </div>
+        </div>
+        
+        <!-- <h1>Hello World</h1>
         <p>Email:<%= profileDetails.email %></p>
         <% Object.keys(profileDetails.details).forEach(function(getDetails) { %>
             <% if(profileDetails.details[getDetails] != "none") {%>
                 <p><%=getDetails%>: <%= profileDetails.details[getDetails] %></p>
             <% } %>
         <% }); %>
-        <div class="popup-overlay"></div>
-        <div class="popup">
-            <form action="/showProfile/details/addTag/<%=profileDetails._id%>" method="post" name="updateTag">
-                <div class="popup-close" onclick="popUp()">&times;</div>
-                <div class="form">
-                    <div class="header">Add New Tag</div>
-                    <div class="element">
-                        <label  for="newTag">New Tag</label>
-                        <input id="newTag" placeholder="Enter your tag" name="tag" type="text" >
-                    </div>
-                    <div class="element">
-                        <button type="submit">Update</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+         -->
 
-        <button onclick='popUp()'>Addtag+</button>
+        
         <script>
             function popUp(){
                 document.body.classList.toggle("showAddTagForm");

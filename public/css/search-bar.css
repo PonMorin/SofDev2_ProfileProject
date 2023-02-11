@@ -18,9 +18,9 @@
 	color: black;
 }
 
-.search-bar button i{
+.search-bar i{
 	width: 25px;
-	color: white;
+	color: #055256;
 	font-size: 20px;
 }
 
@@ -29,6 +29,6 @@
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
-	background: rgba(22, 160, 133, 1);
+	background: #055256;
 	cursor: pointer;
 }

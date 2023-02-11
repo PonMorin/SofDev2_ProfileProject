@@ -26,7 +26,7 @@ exports.createAccount = async(req, res) => {
         password: req.body.password,
         roles: req.body.roles,
         details: {
-            department: req.body.department
+            department: req.body.department,
         }
     }
 

@@ -1,6 +1,15 @@
 .container{
     width: 100%;
     /* min-height: 100vh; */
-    padding: 5%;
+    margin-top: 5vh;
+    padding: 1%;
+    /* align-items: center; */
+    /* background-color: red; */
     justify-content: center;
+    display: flex;
+}
+
+.container h1{
+    font-size: 50px;
+    color: #055256;
 }

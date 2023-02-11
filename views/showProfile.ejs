@@ -7,27 +7,43 @@
     <link rel="stylesheet" type="text/css", href="/css/profileCard.css">
     <link rel="stylesheet" type="text/css", href="/css/search-bar.css">
     <link rel="stylesheet" type="text/css", href="/css/content.css">
+    <link rel="stylesheet" type="text/css", href="/css/style.css">
+    <link rel="stylesheet" type="text/css", href="/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
+
+  <header>
+    <a href="/" class="logo">ProfileProject</a>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <div class="topnav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/showProfile">ProfileList</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/editProfile">Edit Profile</a></li>
+            </ul>
+        </div>
+  </header>
   
   <body>
-    <section class="list-profile">
-      <h1>Student & Teacher</h1>
-
+    <div class="container"><h1>Student & Teacher</h1></div>
+      
       <div class="container">
         <form action="" class="search-bar">
-          <input type="text" placeholder="Search anything" name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
+          <input type="text" placeholder="Search anything" name="search" onkeyup="searchData()" id="user-search">
+          <i class="fa fa-search"></i>
         </form>
       </div>
-      
+    
+    <section class="list-profile">
       <div class="all-user">
             <% if(data.length){
               for(var i = 0; i < data.length; i++) {%> 
                   <div class="profile">
-                    <a href="/showProfile/details/<%=data[i]._id%>">
+                      <a href="/showProfile/details/<%=data[i]._id%>">
                         <div class="profile-info"> 
-                          <img src="/images/user.png">
+                          <div class="imgContainer"><img  src="/images/user.png"></div>
                           <h4 class="profile-email">
                             <%= data[i].email%>
                           </h4>
@@ -35,7 +51,7 @@
                             <%= data[i].name%>
                           </p>
                           <% if (typeof(data[i].details.department) != "undefined") { %>
-                            <p class="profile-name">
+                            <p class="profile-department">
                               <%= data[i].details.department%>
                             </p>
                           <%} %>
@@ -46,6 +62,21 @@
             }%> 
       </div>
     </section>
-    <!-- <script src="/index.js"></script> -->
+    <script>
+      function searchData() {
+        var input = document.getElementById("user-search").value.toLowerCase();
+        var cards = document.getElementsByClassName("profile");
+        for (var i = 0; i < cards.length; i++) {
+          var email = cards[i].getElementsByClassName("profile-email")[0].innerHTML.toLowerCase();
+          var name = cards[i].getElementsByClassName("profile-name")[0].innerHTML.toLowerCase();
+          var department = cards[i].getElementsByClassName("profile-department")[0].innerHTML.toLowerCase();
+          if (email.includes(input) || name.includes(input) || department.includes(input)) {
+            cards[i].style.display = "block";
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+    </script>
   </body>
 </html>
