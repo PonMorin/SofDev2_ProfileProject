@@ -1,14 +1,5 @@
 const profilelist = require('../models/profileList.js')
-
-// exports.index = (req, res) => {
-//     session = req.session;
-//     if(session.email){
-//         res.render('index')
-//     }
-//     else{
-//         res.render('login')
-//     }
-// }
+const subjectlist = require('../models/subjectModel.js')
 
 exports.homePage = (req, res) =>{
     res.render('index')

@@ -8,21 +8,25 @@ header{
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
+    
 }
 
 header .logo{
     font-weight: bolder;
     font-size: 25px; 
     color: #fff;
+    text-decoration: none;
 }
 
 header .topnav ul{
     list-style: none;
+    text-decoration: none;
 }
 
 header .topnav ul li{
     position: relative;
     float: left;
+    text-decoration: none;
 }
 
 header .topnav ul li a{
@@ -30,6 +34,7 @@ header .topnav ul li a{
     padding: 20px;
     color: #fff;
     display: block;
+    text-decoration: none;
 }
 
 

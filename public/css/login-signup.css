@@ -83,7 +83,7 @@ form .select-tag{
 select {
     background-color: white;
     border: thin solid #055256;
-    border-radius: 4px;
+    border-radius: 25px;
     display: inline-block;
     font: inherit;
     line-height: 1.5em;

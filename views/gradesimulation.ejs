@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- <link rel="stylesheet" type="text/css", href="/css/popUp.css"> -->
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css", href="/css/table.css">
+        <link rel="stylesheet" type="text/css", href="/css/navbar.css">
+        <title>Grade Simulation</title>
+    </head>
+
+    <header>
+        <a href="/" class="logo">ProfileProject</a>
+            <input type="checkbox" id="menu-bar">
+            <label for="menu-bar">Menu</label>
+            <div class="topnav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/showProfile">ProfileList</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/editProfile">Edit Profile</a></li>
+                </ul>
+            </div>
+    </header>
+
+    <body>
+        <div class="table-container">
+            <h1 class="heading">Grade Simulation</h1>
+            <div class="choose">
+                <form action="/gradeSim/gradesimulation" method="post">
+                    <label for="choose_function">Year</label>
+                    <select name="year" id="select_year">
+                        <option value="">Choose Type Option</option>
+                        <option value="Year1">Year1</option>
+                        <option value="Year2">Year2</option>
+                        <option value="Year3">Year3</option>
+                        <option value="Year4">Year4</option>
+                    </select>
+                    <label for="choose_function">Term</label>
+                    <select name="term" id="select_term">
+                        <option value="">Choose Type Option</option>
+                        <option value="Term1">Term1</option>
+                        <option value="Term2">Term2</option>
+                    </select>
+                    <button type="submit">Choose</button>
+                </form>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Subject Name</th>
+                        <th>Credit</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var year = subject['subjectYear' + selectyear.substring(4)]; %>
+                    <% var getSubject = year['subjectTerm' + selectterm.substring(4)]; %>
+                
+                    <% if (selectyear && selectterm ) { %>
+                        <% for (var i = 0; i < getSubject.subjectName.length; i++) { %>
+                            <tr>
+                                <td data-label="Subject Name"><%= getSubject.subjectName[i] %></td>
+                                <td data-label="Credit" id="getCredit<%= i %>"><%= getSubject.credit[i] %></td>
+                                <td data-label="Grade">
+                                    <select name="grade" id="select_grade<%= i %>">
+                                        <option value="">Choose Your Grade</option>
+                                        <option value="4">A</option>
+                                        <option value="3.5">B+</option>
+                                        <option value="3">B</option>
+                                        <option value="2.5">C+</option>
+                                        <option value="2">C</option>
+                                        <option value="1.5">D+</option>
+                                        <option value="1">D</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                    
+                    <% var numInput = i%>
+                    <div id="userInput" data-my-var="<%= numInput %>"></div> 
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <button onclick='calGrade()' class="button-32" role="button">Calculate</button>
+            
+            <p>GPA: <span id="gpa"></span></p>
+        </div>
+    
+
+        <script>
+        function calGrade() {
+            var num = document.getElementById("userInput").dataset.myVar;
+            num = parseInt(num)
+            var inputValues = [];
+            var creditValues = [];
+            for (var i = 0; i < num; i++) {
+                var inputValue = document.getElementById("select_grade" + i).value;
+                var creditValue = document.getElementById('getCredit' + i).innerHTML;
+                inputValues.push(parseFloat(inputValue));
+                creditValues.push(parseFloat(creditValue));
+            }
+            let sum = 0
+            let sumCredit = 0
+            for (var i = 0; i < inputValues.length; i++) {
+                sumCredit += creditValues[i]
+                sum += (inputValues[i] * creditValues[i]);
+            }
+            document.getElementById("gpa").innerHTML = sum/sumCredit;
+        }
+        </script>
+    </body>
+</html>

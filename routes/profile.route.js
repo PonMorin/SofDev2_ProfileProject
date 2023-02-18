@@ -1,6 +1,5 @@
 module.exports = (app) => {
     const profilelist = require("../public/controllers/profile.controller.js")
-
     app.get('/signUpPage', profilelist.signUpPage);
     app.post('/updateProfile/:profileId', profilelist.updateProfile)
     app.post('/createAccount', profilelist.createAccount);
