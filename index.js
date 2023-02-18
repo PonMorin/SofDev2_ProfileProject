@@ -113,5 +113,7 @@ app.get('/editProfile', async(req, res) => {
     }
 })
 
-
+app.get('*', (req, res) => {
+    res.render("404")
+})
 

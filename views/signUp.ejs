@@ -4,26 +4,37 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css", href="/css/login-signup.css">
         <title>SignUpPage</title>
     </head>
     <body>
-        <h2>SignUp</h2>
-        <form action="/createAccount" method="post">
-            <input type="email" name="email" placeholder="Email">
-            <input type="text" name="name" placeholder="Name">
-            <input type="password" name="password" placeholder="Password">
-            <label for="choose_function">Choose your roles</label>
-            <select name="roles">
-                <option value="">Choose Type Option</option>
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-            </select>
-            <select name="department">
-                <option value="">Choose Type Option</option>
-                <option value="CPE">CPE</option>
-                <option value="DDT">DDT</option>
-            </select>
-            <button type="submit">SignUp</button>
-        </form>
+        <div class="center">
+            <h2>SignUp</h2>
+            <form action="/createAccount" method="post">
+                <div class="txt_field">
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                
+                <div class="txt_field"><input type="text" name="name" placeholder="Name"></div>
+                <div class="txt_field"><input type="password" name="password" placeholder="Password"></div>
+                <div class="select-tag">
+                    <label for="choose_function">Roles</label>
+                    <select name="roles" class="minimal">
+                        <option value="">Choose Type Option</option>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                    </select>
+                </div>     
+                <div class="select-tag">
+                    <label for="choose_function">Department</label>
+                    <select name="department" class="minimal">
+                        <option value="">Choose Type Option</option>
+                        <option value="CPE">CPE</option>
+                        <option value="DDT">DDT</option>
+                    </select>
+                </div>
+                <button type="submit">SignUp</button>
+            </form>
+        </div>
     </body>
 </html>
