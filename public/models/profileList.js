@@ -25,7 +25,7 @@ const ProfileSchema = mongoose.Schema(
             foodAllergy: String,
             medicineAllergy: String,
         },
-        tag: [String]
+        tag: [String],
     },
     {
         versionKey: false

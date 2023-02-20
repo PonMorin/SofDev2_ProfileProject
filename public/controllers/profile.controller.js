@@ -1,5 +1,6 @@
 const profilelist = require('../models/profileList.js')
 const subjectlist = require('../models/subjectModel.js')
+const bcrypt = require('bcrypt')
 
 exports.homePage = (req, res) =>{
     res.render('index')
@@ -11,6 +12,7 @@ exports.signUpPage = (req, res) => {
 
 
 exports.createAccount = async(req, res) => {
+    const passwordHash = bcrypt.hashSync(req.body.password, 10)
     const data = {
         email: req.body.email,
         name: req.body.name,
@@ -36,7 +38,8 @@ exports.updateProfile = (req, res) =>{
             grade: req.body.grade,
             foodAllergy: req.body.foodAllergy,
             medicineAllergy: req.body.medicineAllergy,
-        }
+        },
+        image: req.body.file
     }}, {new: true})
     .then(data =>{
         if(!data){
