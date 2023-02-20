@@ -33,8 +33,15 @@
                 <ul>
                     <% Object.keys(profileDetails.details).forEach(function(getDetails) { %>
                         <% if(profileDetails.details[getDetails]) {%>
-                            <h3><%=getDetails%></h3>
-                            <li><%= profileDetails.details[getDetails] %></li>
+                            <% if(getDetails == "medicineAllergy" || getDetails == "foodAllergy" || getDetails == "grade") {%>
+                                <% if(roles == "Teacher") {%>
+                                    <h3><%=getDetails%></h3>
+                                    <li><%= profileDetails.details[getDetails] %></li>
+                                <% } %>
+                            <% } else{%>
+                                <h3><%=getDetails%></h3>
+                                <li><%= profileDetails.details[getDetails] %></li>
+                            <% } %>
                         <% } %>
                     <% }); %>
                 </ul>

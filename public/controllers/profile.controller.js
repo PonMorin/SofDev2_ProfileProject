@@ -16,7 +16,7 @@ exports.createAccount = async(req, res) => {
     const data = {
         email: req.body.email,
         name: req.body.name,
-        password: req.body.password,
+        password: passwordHash,
         roles: req.body.roles,
         details: {
             department: req.body.department,
@@ -39,7 +39,6 @@ exports.updateProfile = (req, res) =>{
             foodAllergy: req.body.foodAllergy,
             medicineAllergy: req.body.medicineAllergy,
         },
-        image: req.body.file
     }}, {new: true})
     .then(data =>{
         if(!data){
@@ -68,21 +67,21 @@ exports.findAll = (req, res) => {
     })
 }
 
-exports.showDetail = (req, res) => {
-    profilelist.findById(req.params.profileId).then(data=>{
-        if(!data){
-            return res.status(404).json({
-                msg: "ไม่พบ Record รหัส : " + req.params.profilelist
-            })
-        }
-        res.render('profileDetails', {profileDetails: data})
-        // res.json(data)
-    }).catch(err => {
-        return res.status(500).json({
-            msg: "เกิดข้อผิดพลาด เนื่องจาก : " + err.message
-        })
-    })
-}
+// exports.showDetail = (req, res) => {
+//     profilelist.findById(req.params.profileId).then(data=>{
+//         if(!data){
+//             return res.status(404).json({
+//                 msg: "ไม่พบ Record รหัส : " + req.params.profilelist
+//             })
+//         }
+//         res.render('profileDetails', {profileDetails: data})
+//         // res.json(data)
+//     }).catch(err => {
+//         return res.status(500).json({
+//             msg: "เกิดข้อผิดพลาด เนื่องจาก : " + err.message
+//         })
+//     })
+// }
 
 exports.addTag = (req, res) => {
     profilelist.findByIdAndUpdate(req.params.profileId, {$addToSet: {tag:req.body.tag }}, {new: true})

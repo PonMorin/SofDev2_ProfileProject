@@ -1,6 +1,7 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const sessions = require('express-session')
+const bcrypt = require('bcrypt')
 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -67,16 +68,32 @@ app.get('/', (req,res) => {
 app.post('/login', async(req,res) => {
     try{
         const check = await Profile.findOne({email: req.body.email})
-        if(check.password === req.body.password){
-            session = req.session
-            session.email = req.body.email
-            res.render('index',{
-                user: session
-            })
+        if(check){
+            const isCorrect = bcrypt.compareSync(req.body.password, check.password)
+            if(isCorrect){
+                session = req.session
+                session.email = req.body.email
+                res.render('index',{
+                    user: session
+                })
+            }
+            else{
+                res.send('wrong password')
+            }
         }
         else{
-            res.send('wrong password')
+            return res.redirect('/login')
         }
+        // if(check.password === req.body.password){
+        //     session = req.session
+        //     session.email = req.body.email
+        //     res.render('index',{
+        //         user: session
+        //     })
+        // }
+        // else{
+        //     res.send('wrong password')
+        // }
     }
     catch{
         res.send('wrong details ')
@@ -107,6 +124,21 @@ app.get('/editProfile', async(req, res) => {
         const getData = await Profile.findOne({email: userEmail})
         res.render("editProfile", {
             data: getData
+        });
+    } else {
+        console.log('Failed to retrieve the Course List: ');
+    }
+})
+
+app.get('/showProfile/details/:profileId', async(req, res) => {
+    session = req.session
+    const userEmail = session.email
+    if (session.email) {
+        const getData = await Profile.findById({_id: req.params.profileId})
+        const getRoles = await Profile.findOne({email: userEmail})
+        res.render("profileDetails", {
+            profileDetails: getData,
+            roles: getRoles.roles
         });
     } else {
         console.log('Failed to retrieve the Course List: ');
