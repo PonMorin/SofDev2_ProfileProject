@@ -56,10 +56,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% var year = subject['subjectYear' + selectyear.substring(4)]; %>
-                    <% var getSubject = year['subjectTerm' + selectterm.substring(4)]; %>
-                
-                    <% if (selectyear && selectterm ) { %>
+                    <% if (selectyear != " "&& selectterm != " ") { %>
+                        <% var year = subject['subjectYear' + selectyear.substring(4)]; %>
+                        <% var getSubject = year['subjectTerm' + selectterm.substring(4)]; %>
+
                         <% for (var i = 0; i < getSubject.subjectName.length; i++) { %>
                             <tr>
                                 <td data-label="Subject Name"><%= getSubject.subjectName[i] %></td>
@@ -79,7 +79,6 @@
                             </tr>
                         <% } %>
                     <% } %>
-                    
                     <% var numInput = i%>
                     <div id="userInput" data-my-var="<%= numInput %>"></div> 
                 </tbody>
@@ -110,7 +109,8 @@
                 sumCredit += creditValues[i]
                 sum += (inputValues[i] * creditValues[i]);
             }
-            document.getElementById("gpa").innerHTML = sum/sumCredit;
+            let gpa = sum/sumCredit
+            document.getElementById("gpa").innerHTML = gpa.toFixed(2);
         }
         </script>
     </body>

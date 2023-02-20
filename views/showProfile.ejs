@@ -55,6 +55,9 @@
                               <%= data[i].details.department%>
                             </p>
                           <%} %>
+                          <p class="profile-tag">
+                            <%= data[i].tag%>
+                          </p>
                         </div>
                       </a>
                   </div>
@@ -70,7 +73,8 @@
           var email = cards[i].getElementsByClassName("profile-email")[0].innerHTML.toLowerCase();
           var name = cards[i].getElementsByClassName("profile-name")[0].innerHTML.toLowerCase();
           var department = cards[i].getElementsByClassName("profile-department")[0].innerHTML.toLowerCase();
-          if (email.includes(input) || name.includes(input) || department.includes(input)) {
+          var tag = cards[i].getElementsByClassName("profile-tag")[0].innerHTML.toLowerCase();
+          if (email.includes(input) || name.includes(input) || department.includes(input) || tag.includes(input)) {
             cards[i].style.display = "block";
           } else {
             cards[i].style.display = "none";

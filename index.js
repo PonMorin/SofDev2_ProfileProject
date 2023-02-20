@@ -116,8 +116,8 @@ app.get('/editProfile', async(req, res) => {
 app.get('/gradeSim', async(req, res) => {
     session = req.session
     const userEmail = session.email
-    const selectYear = "Year1"
-    const selectTerm = "Term1"
+    const selectYear = " "
+    const selectTerm = " "
     if (session.email) {
         const getData = await Profile.findOne({email: userEmail})
         const getSubject = await Subject.findOne({department: getData.details.department})
@@ -152,60 +152,63 @@ app.post('/gradeSim/gradesimulation', async(req, res) => {
 })
 
 
+
 app.get('*', (req, res) => {
     res.render("404")
 })
 
-// function initSubject(){
-//     let data = [
-//         {
-//             department: "Computer Engineering",
-//             subjectYear1:{
-//                 subjectTerm1: {
-//                     subjectName: ["ฟิสิกส์"],
-//                     credit: [3]
-//                 },
-//                 subjectTerm2: {
-//                     subjectName: ["ทฤษฎีวงจรไฟฟ้า"],
-//                     credit: [3]
-//                 }
-//             },
-//             subjectYear2:{
-//                 subjectTerm1: {
-//                     subjectName: ["โครงสร้างของระบบคอมพิวเตอร์ "],
-//                     credit: [3]
-//                 },
-//                 subjectTerm2: {
-//                     subjectName: ["การพัฒนาระบบซอฟต์แวร์ 2"],
-//                     credit: [2]
-//                 }
-//             },
-//             subjectYear3:{
-//                 subjectTerm1: {
-//                     subjectName: ["Network", "AI"],
-//                     credit: [3, 2]
-//                 },
-//                 subjectTerm2: {
-//                     subjectName: ["ฝึกงาน"],
-//                     credit: [4]
-//                 }
-//             },
-//             subjectYear4:{
-//                 subjectTerm1: {
-//                     subjectName: ["Security"],
-//                     credit: [2]
-//                 },
-//                 subjectTerm2: {
-//                     subjectName: ["Project"],
-//                     credit: [3]
-//                 }
-//             },
-//         }
-//     ]
+function initSubject(){
+    let data = [
+        {
+            department: "DDT",
+            subjectYear1:{
+                subjectTerm1: {
+                    subjectName: ["Design", "ภาษาอังกฤษปรับพื้นฐาน 1", "คณิตศาสตร์และสถิติในชีวิตประจำวัน", 
+                    "พื้นฐานการเขียนโปรแกรม", "สุขภาวะกายและจิต", "ภาวะผู้นำและบุคลิกภาพ "],
+                    credit: [3, 0, 3, 3, 3, 1]
+                },
+                subjectTerm2: {
+                    subjectName: ["ภาษาอังกฤษปรับพื้นฐาน 2", "การสื่อสารเพื่อการนำเสนอ", "การอ่านและการเขียนภาษาไทยเพื่ออาชีพ",
+                    "ปฏิบัติการวงจรไฟฟ้า", "ทฤษฎีวงจรไฟฟ้า", "คณิตศาสตร์วิศวกรรม 2", "โครงสร้างข้อมูลและขั้นตอนวิธี"],
+                    credit: [0, 2, 2, 1, 3, 3, 3]
+                }
+            },
+            subjectYear2:{
+                subjectTerm1: {
+                    subjectName: ["ภาษาจีนกลาง 1", "ภาษาอังกฤษเพื่อการสื่อสาร", "วิทยาศาสตร์เพื่อคุณภาพชีวิต"],
+                    credit: [1, 2, 3]
+                },
+                subjectTerm2: {
+                    subjectName: ["ภาษาอังกฤษเพื่อวิชาชีพ", "ภาษาจีนกลาง 2"],
+                    credit: [2, 1]
+                }
+            },
+            subjectYear3:{
+                subjectTerm1: {
+                    subjectName: ["ภาษาไทยเพื่อการสื่อสาร", "วิชาเลือกภาษาอังกฤษ","วิชาเลือก", "วิชาเลือก", "ภาษาจีน3"],
+                    credit: [2, 2, 3, 1, 1]
+                },
+                subjectTerm2: {
+                    subjectName: ["วิชาเลือก", "การคิดสร้างสรรค์เพื่อสังคม", "วิชาเลือกเสรี","ฝึกงาน"],
+                    credit: [3, 3, 3, 4]
+                }
+            },
+            subjectYear4:{
+                subjectTerm1: {
+                    subjectName: ["วิชาเลือกกลุ่มวิชาสังคมศาสตร์", "Project1", "วิชาเลือก"],
+                    credit: [3, 1, 3]
+                },
+                subjectTerm2: {
+                    subjectName: ["Project2", "วิชาเลือกภาษาอังกฤษ", "วิชาเลือกเสรี"],
+                    credit: [3, 2, 3]
+                }
+            },
+        }
+    ]
 
-//     for(let i = 0; i < data.length; i++){
-//         const s = new Sunject(data[i]);
-//         s.save()
-//     }
-//     console.log("สร้าง Subject สำเร็จแล้ว")
-// }
+    for(let i = 0; i < data.length; i++){
+        const s = new Subject(data[i]);
+        s.save()
+    }
+    console.log("สร้าง Subject สำเร็จแล้ว")
+}
