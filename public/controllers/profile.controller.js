@@ -7,24 +7,49 @@ exports.homePage = (req, res) =>{
 }
 
 exports.signUpPage = (req, res) => {
-    res.render('signUp')
+    res.render('signUp', {msg: ""})
 }
 
 
-exports.createAccount = async(req, res) => {
-    const passwordHash = bcrypt.hashSync(req.body.password, 10)
-    const data = {
-        email: req.body.email,
-        name: req.body.name,
-        password: passwordHash,
-        roles: req.body.roles,
-        details: {
-            department: req.body.department,
+exports.createAccount = (req, res) => {
+    profilelist.findOne({email: req.body.email}).then(data=>{
+        const getPassword = req.body.password
+        if(data){
+            res.render("signUp", {msg: "User Have Already"})
         }
-    }
-
-    await  profilelist.insertMany([data])
-    res.redirect("/")
+        else if(req.body.password != req.body.confirmPassword){
+            res.render("signUp", {msg: "Password not match"})
+        }
+        else if(req.body.name == "" || req.body.roles == "" || req.body.department == ""){
+            res.render("signUp", {msg: "Please Complete Field"})
+        }
+        else if(getPassword.length < 6){
+            res.render("signUp", {msg: "password must be more than 6"})
+        }
+        else{
+            console.log("z")
+            const passwordHash = bcrypt.hashSync(req.body.password, 10)
+            const data = {
+                email: req.body.email,
+                name: req.body.name,
+                password: passwordHash,
+                roles: req.body.roles,
+                details: {
+                    department: req.body.department,
+                }
+            }
+    
+            const newUser = new profilelist(data)
+            newUser.save()
+            // profilelist.insertMany([data])
+            res.redirect("/")
+        }
+    }).catch(err => {
+        return res.status(500).json({
+            msg: "เกิดข้อผิดพลาด เนื่องจาก : " + err.message
+        })
+    })
+    
 }
 
 exports.updateProfile = (req, res) =>{

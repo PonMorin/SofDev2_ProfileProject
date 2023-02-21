@@ -15,8 +15,15 @@
                     <input type="email" name="email" placeholder="Email">
                 </div>
                 
-                <div class="txt_field"><input type="text" name="name" placeholder="Name"></div>
-                <div class="txt_field"><input type="password" name="password" placeholder="Password"></div>
+                <div class="txt_field">
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                </div>
                 <div class="select-tag">
                     <label for="choose_function">Roles</label>
                     <select name="roles" class="minimal">
@@ -33,6 +40,9 @@
                         <option value="DDT">DDT</option>
                     </select>
                 </div>
+                <% if(msg){%>
+                    <p class="alert-valid">*<%= msg %></p>
+                <% } %>
                 <button type="submit">SignUp</button>
             </form>
         </div>
