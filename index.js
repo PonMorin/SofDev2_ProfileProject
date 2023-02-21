@@ -84,16 +84,6 @@ app.post('/login', async(req,res) => {
         else{
             return res.redirect('/login')
         }
-        // if(check.password === req.body.password){
-        //     session = req.session
-        //     session.email = req.body.email
-        //     res.render('index',{
-        //         user: session
-        //     })
-        // }
-        // else{
-        //     res.send('wrong password')
-        // }
     }
     catch{
         res.send('wrong details ')
@@ -154,7 +144,7 @@ app.get('/gradeSim', async(req, res) => {
         const getData = await Profile.findOne({email: userEmail})
         const getSubject = await Subject.findOne({department: getData.details.department})
         res.render("gradesimulation", {
-            user: getData,
+            userGrade: getData.details.grade,
             subject: getSubject,
             selectyear: selectYear,
             selectterm: selectTerm
@@ -173,7 +163,7 @@ app.post('/gradeSim/gradesimulation', async(req, res) => {
         const getData = await Profile.findOne({email: userEmail})
         const getSubject = await Subject.findOne({department: getData.details.department})
         res.render("gradesimulation", {
-            user: getData,
+            userGrade: getData.details.grade,
             subject: getSubject,
             selectyear: selectYear,
             selectterm: selectTerm

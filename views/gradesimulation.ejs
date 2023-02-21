@@ -81,6 +81,7 @@
                     <% } %>
                     <% var numInput = i%>
                     <div id="userInput" data-my-var="<%= numInput %>"></div> 
+                    <div id="usergrade" data-my-var="<%= userGrade %>"></div>
                 </tbody>
             </table>
         </div>
@@ -88,30 +89,9 @@
             <button onclick='calGrade()' class="button-32" role="button">Calculate</button>
             
             <p>GPA: <span id="gpa"></span></p>
+            <p>GPAX: <span id="gpax"></span></p>
         </div>
     
-
-        <script>
-        function calGrade() {
-            var num = document.getElementById("userInput").dataset.myVar;
-            num = parseInt(num)
-            var inputValues = [];
-            var creditValues = [];
-            for (var i = 0; i < num; i++) {
-                var inputValue = document.getElementById("select_grade" + i).value;
-                var creditValue = document.getElementById('getCredit' + i).innerHTML;
-                inputValues.push(parseFloat(inputValue));
-                creditValues.push(parseFloat(creditValue));
-            }
-            let sum = 0
-            let sumCredit = 0
-            for (var i = 0; i < inputValues.length; i++) {
-                sumCredit += creditValues[i]
-                sum += (inputValues[i] * creditValues[i]);
-            }
-            let gpa = sum/sumCredit
-            document.getElementById("gpa").innerHTML = gpa.toFixed(2);
-        }
-        </script>
+        <script src="/javascript/calGrade.js"></script>
     </body>
 </html>
