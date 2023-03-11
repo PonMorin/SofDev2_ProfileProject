@@ -126,10 +126,20 @@ app.get('/showProfile/details/:profileId', async(req, res) => {
     if (session.email) {
         const getData = await Profile.findById({_id: req.params.profileId})
         const getRoles = await Profile.findOne({email: userEmail})
-        res.render("profileDetails", {
-            profileDetails: getData,
-            roles: getRoles.roles
-        });
+        if(getRoles == "Teacher"){
+            res.render("profileDetails", {
+                profileDetails: getData,
+                roles: getRoles.roles
+            });
+        }
+        else{
+            const checkPrivacy = getData.privacy
+            for(let i = 0; i < checkPrivacy.length; i++){
+                if(checkPrivacy[i] == "private"){
+                    
+                }
+            }
+        }
     } else {
         console.log('Failed to retrieve the Course List: ');
     }

@@ -4,6 +4,7 @@
     <head>
         <!-- <link rel="stylesheet" type="text/css", href="/css/popUp.css"> -->
         <link rel="stylesheet" type="text/css", href="/css/inputElement.css">
+        <link rel="stylesheet" type="text/css", href="/css/toggleSwitch.css">
     </head>
 
     <body>
@@ -20,7 +21,14 @@
                 </div>
                 <div class="element">
                     <label  for="phoneNumber">PhoneNumber</label>
-                    <input id="phoneNumber" value="<%=data.details.phoneNumber%>" name="phoneNumber" type="text" >
+                    <input id="phoneNumber" value="<%=data.details.phoneNumber%>" name="phoneNumber" type="tel" >
+                    <div class="switchParent">
+                        <p class="switchText">Private</p>
+                        <label class="switch">
+                            <input type="checkbox" name="checkPhone">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="element">
                     <label  for="lineID">LineID</label>
@@ -33,10 +41,24 @@
                 <div class="element">
                     <label  for="foodAllergy">Food Allergy</label>
                     <input id="foodAllergy" value="<%=data.details.foodAllergy%>" name="foodAllergy" type="text" >
+                    <div class="switchParent">
+                        <p class="switchText">Private</p>
+                        <label class="switch">
+                            <input type="checkbox" name="checkFood">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="element">
                     <label  for="medicineAllergy">Medicine Allergy</label>
                     <input id="medicineAllergy" value="<%=data.details.medicineAllergy%>" name="medicineAllergy" type="text" >
+                    <div class="switchParent">
+                        <p class="switchText">Private</p>
+                        <label class="switch">
+                            <input type="checkbox" name="checkMedicine">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="element">

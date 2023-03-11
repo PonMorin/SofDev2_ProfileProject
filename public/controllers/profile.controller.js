@@ -27,7 +27,6 @@ exports.createAccount = (req, res) => {
             res.render("signUp", {msg: "password must be more than 6"})
         }
         else{
-            console.log("z")
             const passwordHash = bcrypt.hashSync(req.body.password, 10)
             const data = {
                 email: req.body.email,
@@ -53,6 +52,16 @@ exports.createAccount = (req, res) => {
 }
 
 exports.updateProfile = (req, res) =>{
+    if(req.body.checkFood == "on" || req.body.checkPhone == "on" || req.body.checkMedicine == "on"){
+        req.body.checkFood = "private"
+        req.body.checkPhone = "private"
+        req.body.checkMedicine = "private"
+    }
+    else{
+        req.body.checkFood = "public"
+        req.body.checkPhone = "public"
+        req.body.checkMedicine = "public"
+    }
     profilelist.findByIdAndUpdate(req.params.profileId, {$set: {
         name: req.body.name,
         details:{
@@ -64,6 +73,7 @@ exports.updateProfile = (req, res) =>{
             foodAllergy: req.body.foodAllergy,
             medicineAllergy: req.body.medicineAllergy,
         },
+        privacy:[req.body.checkPhone, req.body.checkFood, req.body.checkMedicine]
     }}, {new: true})
     .then(data =>{
         if(!data){
