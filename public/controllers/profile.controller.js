@@ -52,16 +52,16 @@ exports.createAccount = (req, res) => {
 }
 
 exports.updateProfile = (req, res) =>{
-    if(req.body.checkFood == "on" || req.body.checkPhone == "on" || req.body.checkMedicine == "on"){
-        req.body.checkFood = "private"
-        req.body.checkPhone = "private"
-        req.body.checkMedicine = "private"
-    }
-    else{
-        req.body.checkFood = "public"
-        req.body.checkPhone = "public"
-        req.body.checkMedicine = "public"
-    }
+    // if(req.body.checkFood == "on" || req.body.checkPhone == "on" || req.body.checkMedicine == "on"){
+    //     req.body.checkFood = "private"
+    //     req.body.checkPhone = "private"
+    //     req.body.checkMedicine = "private"
+    // }
+    // else{
+    //     req.body.checkFood = "public"
+    //     req.body.checkPhone = "public"
+    //     req.body.checkMedicine = "public"
+    // }
     profilelist.findByIdAndUpdate(req.params.profileId, {$set: {
         name: req.body.name,
         details:{

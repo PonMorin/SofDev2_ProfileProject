@@ -135,13 +135,13 @@ app.get('/showProfile/details/:profileId', async(req, res) => {
         else{
             const checkPrivacy = getData.privacy;
             getData.details.grade = ""
-            if(checkPrivacy[0] == "private"){
+            if(checkPrivacy[0] == "on"){
                 getData.details.phoneNumber = ""
             }
-            if(checkPrivacy[1] == "private"){
-                getData.details.foodAllergyy = ""
+            if(checkPrivacy[1] == "on"){
+                getData.details.foodAllergy = ""
             }
-            if(checkPrivacy[2] == "private"){
+            if(checkPrivacy[2] == "on"){
                 getData.details.medicineAllergy = ""
             }
             res.render("profileDetails", {
